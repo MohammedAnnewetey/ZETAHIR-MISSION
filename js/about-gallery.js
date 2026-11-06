@@ -78,14 +78,13 @@
     // Open the same image shown in the gallery
     photo.src = galleryImage.currentSrc || galleryImage.src;
 
-    var description = tile.dataset.caption;
+    // Use the visible gallery label as the single source of truth.
+    // Editing .gallery-overlay text in about.html updates the lightbox too.
+    var overlayLabel = tile.querySelector('.gallery-overlay span');
+    var description = overlayLabel ? overlayLabel.textContent.trim() : '';
 
     if (!description) {
-      description = galleryImage.alt;
-    }
-
-    if (!description) {
-      description = '';
+      description = galleryImage.alt || '';
     }
 
     photo.alt = galleryImage.alt || description;
