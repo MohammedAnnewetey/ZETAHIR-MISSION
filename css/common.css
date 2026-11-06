@@ -368,4 +368,4 @@ button{font:inherit}
 }
 
 /* Keep standard content photos entirely visible when their files are replaced. */
-.info-card .media img,.aside-image .media img{object-fit:contain;object-position:center;background:var(--cream)}
+.info-card .media img,.aside-image .media img{object-fit:cover;object-position:center;background:var(--cream)}
