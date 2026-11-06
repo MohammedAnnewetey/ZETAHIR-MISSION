@@ -302,7 +302,9 @@ button{font:inherit}
 @media (max-width:1024px){
   .menu-btn{display:block}
   .nav-panel{position:fixed;top:var(--nav-h);left:0;right:0;max-height:calc(100dvh - var(--nav-h));overflow-y:auto;overscroll-behavior:contain;flex-direction:column;align-items:stretch;gap:24px;padding:8px 24px 36px;background:radial-gradient(90% 60% at 100% 0,rgba(14,107,216,.35),transparent 60%),linear-gradient(160deg,#02142f,#052a61);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .3s,transform .35s var(--ease),visibility .3s}
-  .nav-panel.open{opacity:1;visibility:visible;transform:none}
+  /* A closed mobile menu must never cover content or intercept taps (iOS Safari). */
+  .nav-panel:not(.open){display:none;pointer-events:none}
+  .nav-panel.open{display:flex;opacity:1;visibility:visible;transform:none;pointer-events:auto}
   .menu-open{overflow:hidden}
   .menu-open .site-header{--hc:#fff;--hh:rgba(255,255,255,.12);background:var(--midnight);box-shadow:none}
   .nav-links{flex-direction:column;align-items:stretch;gap:0}
