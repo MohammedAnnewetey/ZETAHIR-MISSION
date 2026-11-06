@@ -124,6 +124,19 @@
     window.addEventListener('resize', tick);
   }
 
+  /* Back to top: use the page scroll position directly for iOS Safari and in-app browsers. */
+  doc.querySelectorAll('a[href="#top-of-page"]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (panel && panel.classList.contains('open')) setMenu(false);
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      } catch (error) {
+        window.scrollTo(0, 0);
+      }
+    });
+  });
+
   /* Footer year */
   doc.querySelectorAll('[data-year]').forEach(function (n) { n.textContent = new Date().getFullYear(); });
 })();
